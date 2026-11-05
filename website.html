@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-image: url('https://wallpaperaccess.com/full/1732280.jpg');
+        }
+        header{
+            background-color: rgb(12, 12, 12);
+            color:white;
+            text-align: center;
+            padding: 12px;
+        }
+        nav{
+            margin-top: 12px;
+            box-shadow: 0 4px 8px rgba(12, 12, 12, 0.1);
+        }
+        nav a{
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight:bold;
+            font-size: 25px;
+        }
+        nav a:hover{
+            text-decoration: underline;
+        }
+        article{
+            background-color:rgba(12, 12,12,0.1) ;
+        }
+        article h1{
+            text-transform: uppercase;
+            text-align: center;
+        }
+        article h3{
+            font-size: larger;
+            text-align: center;
+        }
+        #products{
+            display: grid;
+            grid-template-columns:repeat(auto-fit,minmax(200px,1fr)) ;
+            gap: 20px;
+            padding: 20px;
+        }
+        div{
+            border: 12px solid rgb(238, 235, 235);
+            border-radius: 8px;
+            padding: 12px;
+            box-shadow: rgba(12, 12, 12,0.1);
+        }
+        div img {
+        display: block;
+        margin: auto;
+         }
+        div img{
+            max-width: 100%;
+            height: 150px;
+            border-radius: 6px;
+            align-items: center;
+        }
+        div h3{
+            font-size: large;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        div p{
+            font-size: medium;
+            text-align: center;
+        }
+        div button{
+             background-color: green;
+             color: white;
+    padding: 8px 20px;
+    margin: 10px auto;
+    display: block;
+    cursor: pointer;
+        }
+        div button:hover{
+            background-color: rgb(75, 157, 75);
+            text-decoration: underline;
+        }
+        form{
+            box-shadow:rgba(12, 12,12,0.1) ;
+            text-align: center;
+            padding: 12px;
+        }
+        footer{
+            background-color: gray;
+            text-align: center;
+            padding: 12px;
+            margin-top: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <header id="home">
+        <h1>DRESS WORLD</h1>
+    </header>
+    <nav>
+        <a href="#home">home</a>
+        <a href="#aboutus">about us</a>
+        <a href="#products">product</a>
+        <a href="#form">contact us</a>
+    </nav>
+    <article id="aboutus">
+        <h1>about us</h1>
+        <h3>Dress world is recognized as one of the largest and most influential companies in the world, built on a foundation of relentless customer obsession, a passion for continuous innovation, a commitment to operational excellence, and a long-term vision that drives sustainable growth and technological advancement across industries ranging from e-commerce and cloud computing to entertainment and logistics.
+</h3>
+    </article>
+    <section id="products">
+        <div>
+            <img src="https://i.etsystatic.com/22489341/r/il/5202da/3203911478/il_fullxfull.3203911478_pkgx.jpg" alt="1">
+            <h3>product 1</h3>
+            <p>550 rupees</p>
+            <button>Add to Cart</button>
+        </div>
+        <div>
+            <img src="https://i.etsystatic.com/22489341/r/il/5202da/3203911478/il_fullxfull.3203911478_pkgx.jpg" alt="2">
+            <h3>product 2</h3>
+            <p>550 rupees</p>
+            <button>Add to Cart</button>
+        </div>
+        <div>
+            <img src="https://i.etsystatic.com/22489341/r/il/5202da/3203911478/il_fullxfull.3203911478_pkgx.jpg" alt="3">
+            <h3>product 3</h3>
+            <p>50 rupees</p>
+            <button>Add to Cart</button>
+        </div>
+        <div>
+            <img src="https://i.etsystatic.com/22489341/r/il/5202da/3203911478/il_fullxfull.3203911478_pkgx.jpg" alt="4">
+            <h3>product 4</h3>
+            <p>50 rupees</p>
+            <button>Add to Cart</button>
+        </div>
+        <div>
+            <img src="https://i.etsystatic.com/22489341/r/il/5202da/3203911478/il_fullxfull.3203911478_pkgx.jpg" alt="5">
+            <h3>product 5</h3>
+            <p>50 rupees</p>
+            <button>Add to Cart</button>
+        </div>
+        <div>
+            <img src="https://i.etsystatic.com/22489341/r/il/5202da/3203911478/il_fullxfull.3203911478_pkgx.jpg" alt="6">
+            <h3>product 6</h3>
+            <p>50 rupees</p>
+            <button>Add to Cart</button>
+        </div>
+    </section>
+    <form id="form">
+        <fieldset>
+            <h1>contact us</h1>
+            <label for="name">NAME:</label>
+            <input type="name"><br><br><br>
+            <label for="number">PHONE NUMBER:</label>
+            <input type="number"><br><br><br>
+            <label for="e.mail">E.MAIL</label>
+            <input type="e.mail"><br><br><br>
+            <button type="submit">SUMBIT</button>
+            </fieldset>
+    </form>
+    <footer>
+    <p>&copy; 2025 My Shop. All rights reserved.</p>
+  </footer>
+</body>
+</html>
