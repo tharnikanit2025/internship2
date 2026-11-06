@@ -1,0 +1,21 @@
+h1,h2,p{
+    text-align: center;
+    font-size: 20px;
+    color: #fefcfc;
+}
+body{
+     background-image:url(https://wallpapercave.com/wp/wp2288271.jpg);
+     align-items: center;
+     justify-content: center;
+}
+form{
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 50px;
+    max-width: 400px;
+    background-color:rgba(242,242,242,0.5);
+}
+ul,a{
+    color: #fefcfc;
+}
