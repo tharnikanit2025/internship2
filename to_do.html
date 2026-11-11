@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To Do List</title>
+    <style>
+        body{
+            font-family: Arial;
+            text-align: center;
+            padding: 50px;
+        }
+        .container{
+            background: white;
+            width: 350px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px #aaa;
+        }
+        input[type="text"]{
+            padding: 10px;
+            width: 60%;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+        }
+        button{
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: #c5447e;
+            color: white;
+            cursor: pointer;
+        }
+        ul{
+            padding: 0;
+            list-style: none;
+        }
+        li{
+            background: #fbfbfb;
+            padding: 12px;
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px;
+        }
+        .task{
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .completed{
+            text-decoration: line-through;
+            color: gray;
+        }
+        li button{
+            background: #fe0000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>My To-Do List</h1>
+        <input type="text" id="taskInput" placeholder="Enter your task">
+        <button id="addBtn">Add</button>
+        <ul id="taskList"></ul>
+    </div>
+    <script>
+        let input = document.getElementById("taskInput");
+        let button = document.getElementById("addBtn");
+        let list = document.getElementById("taskList");
+        button.addEventListener("click", function() {
+            let task = input.value.trim();
+            if (task === "") {
+                alert("Please enter a task");
+                return;
+            }
+            let li = document.createElement("li");
+            let taskDiv = document.createElement("div");
+            taskDiv.className ="task";
+            let checkbox = document.createElement("input");
+            checkbox.type ="checkbox";
+            let span = document.createElement("span");
+            span.innerText = task;
+            checkbox.addEventListener("change", function() {
+                if (checkbox.checked) {
+                    span.classList.add("completed");
+                } else {
+                    span.classList.remove("completed");
+                }
+            });
+            let deleteBtn = document.createElement("button");
+            deleteBtn.innerText = "Delete";
+            deleteBtn.addEventListener("click", function() {
+                li.remove();
+            });
+            taskDiv.appendChild(checkbox);
+            taskDiv.appendChild(span);
+            li.appendChild(taskDiv);
+            li.appendChild(deleteBtn);
+            list.appendChild(li);
+            input.value = "";
+        });
+    </script>
+</body>
+</html>
+

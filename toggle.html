@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Theme Toggle</title>
+    <style>
+        body{
+            font-family: Arial;
+            text-align: center;
+            padding-top: 100px;
+            color: #222;
+            transition: 0.3s;
+        }
+        .dark {
+            background: #171717;
+            color: white;
+        }
+        button{
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            background: #5744c5;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+        <h1>WANT TO CHANGE MY MODE</h1>
+        <p>CHANGE HERE</p>
+        <button id="themeBtn">Dark Mode</button>
+    <script>
+        let button = document.getElementById("themeBtn");
+        button.addEventListener("click", function() {
+            document.body.classList.toggle("dark");
+            if (document.body.classList.contains("dark")) {
+                button.innerText = "Light Mode";
+            } else {
+                button.innerText = "Dark Mode";
+            }
+        });
+    </script>
+</body>
+</html>
