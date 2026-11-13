@@ -1,17 +1,23 @@
-num1 = float(input("Enter first number: "))
-num2 = float(input("Enter second number: "))
-operator = input("Enter operator (+, -, *, /): ")
-if operator == "+":
-    print("Result:", num1 + num2)
-elif operator == "-":
-    print("Result:", num1 - num2)
-
-elif operator == "*":
-    print("Result:", num1 * num2)
-elif operator == "/":
-    if num2 != 0:
-        print("Result:", num1 / num2)
-    else:
-        print("Cannot divide by zero")
-else:
-    print("Invalid operator")
+def calculator():
+    try:
+        a = float(input("Enter first number: "))
+        b = float(input("Enter second number: "))
+        operator = input("Enter operator (+, -, *, /): ").strip()
+        if operator == "+":
+            print("Result:", a + b)
+        elif operator == "-":
+            print("Result:", a - b)
+        elif operator == "*":
+            print("Result:", a * b)
+        elif operator == "/":
+            if b == 0:
+                print("Error: Cannot divide by zero!")
+            else:
+                print("Result:", a / b)
+        else:
+            print("Invalid operator!")
+    except ValueError:
+        print("Error: Please enter valid numbers!")
+    except OverflowError:
+        print("Error: Number is too large!")
+calculator()
