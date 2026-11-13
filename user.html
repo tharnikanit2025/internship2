@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User List Viewer</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-color: rgba(255, 0, 183, 0.777);
+            text-align: center;
+            padding: 30px;
+        }
+        h1 {
+            color: rgb(92, 0, 92);
+        }
+        input {
+            width: 280px;
+            padding: 12px;
+            border: 1px solid gray;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+        .user-card {
+            background: white;
+            width: 250px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 8px #aaa;
+            text-align: left;
+        }
+        .user-card h3 {
+            color: rgb(92, 0, 92);
+        }
+        #message {
+            margin: 15px;
+            font-weight: bold;
+        }
+        .error {
+            color: red;
+        }
+        .loading {
+            color: blue;
+        }
+        .success {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>User List Viewer</h1>
+
+    <input type="text" id="search"placeholder="Search users by name..."disabled>
+    <p id="message" class="loading">Loading users...</p>
+    <div class="container" id="userList"></div>
+    <script>
+        let users = [];
+        const userList = document.getElementById("userList");
+        const message = document.getElementById("message");
+        const search = document.getElementById("search");
+        async function getUsers() {
+            message.textContent = "Loading users...";
+            message.className = "loading";
+            try {
+                let response = await fetch(
+                    "https://jsonplaceholder.typicode.com/users"
+                );
+                if (!response.ok) {
+                    throw new Error("Failed to fetch users");
+                }
+                users = await response.json();
+                search.disabled = false;
+                message.textContent = "";
+                displayUsers(users);
+            } catch (error) {
+                message.textContent =
+                    "Error loading users. Please check your internet and try again.";
+                message.className = "error";
+            }
+        }
+        function displayUsers(userArray) {
+            userList.innerHTML = "";
+            if (userArray.length === 0) {
+                message.textContent = "No users found!";
+                message.className = "error";
+                return;
+            }
+            message.textContent = "";
+            userArray.forEach(function(user) {
+                let card = document.createElement("div");
+                card.className = "user-card";
+                let name = document.createElement("h3");
+                name.textContent = user.name;
+                let email = document.createElement("p");
+                email.textContent = "Email: " + user.email;
+                let city = document.createElement("p");
+                city.textContent = "City: " + user.address.city;
+                let phone = document.createElement("p");
+                phone.textContent = "Phone: " + user.phone;
+                card.appendChild(name);
+                card.appendChild(email);
+                card.appendChild(city);
+                card.appendChild(phone);
+                userList.appendChild(card);
+            });
+        }
+        search.addEventListener("input", function() {
+            let searchValue = search.value.toLowerCase();
+            let filteredUsers = users.filter(function(user) {
+                return user.name.toLowerCase().includes(searchValue);
+            });
+            displayUsers(filteredUsers);
+        });
+        getUsers();
+    </script>
+</body>
+</html>

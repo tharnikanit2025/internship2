@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Random Quote Generator</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            color: rgb(225, 33, 126);
+        }
+
+        #quote {
+            font-size: 20px;
+            margin: 20px 0;
+        }
+
+        #author {
+            font-style: italic;
+        }
+
+        button {
+            background: rgb(225, 33, 126);;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: rgb(255, 0, 123);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Random Quote Generator</h1>
+        <p id="quote">Click the button to get a quote!</p>
+        <p id="author"></p>
+        <p id="message"></p>
+        <button id="quoteBtn" onclick="getQuote()">
+            New Quote
+        </button>
+    </div>
+    <script>
+        async function getQuote() {
+            let quote = document.getElementById("quote");
+            let author = document.getElementById("author");
+            let message = document.getElementById("message");
+            let button = document.getElementById("quoteBtn");
+            quote.textContent = "Loading...";
+            author.textContent = "";
+            message.textContent = "";
+            button.disabled = true;
+
+            try {
+                let response = await fetch(
+                    "https://dummyjson.com/quotes/random"
+                );
+                if (!response.ok) {
+                    throw new Error("Failed to fetch quote");
+                }
+                let data = await response.json();
+                quote.textContent = '"' + data.quote + '"';
+                author.textContent = "- " + data.author;
+            } catch (error) {
+                quote.textContent = "Unable to load quote.";
+                message.textContent = "Please check your internet and try again.";
+            } finally {
+                button.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>
